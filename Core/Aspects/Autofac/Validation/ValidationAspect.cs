@@ -7,11 +7,13 @@ using System.Linq;
 
 namespace Core.Aspects.Autofac.Validation
 {
+    //Aspect metodun neresinde çalışmasını istiyorsan orada çalışan yapıdır.
     public class ValidationAspect : MethodInterception
     {
         private Type _validatorType;
         public ValidationAspect(Type validatorType)
         {
+            //defensive coding
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
                 throw new Exception("Bu bir doğrulama sınıfı değil");
